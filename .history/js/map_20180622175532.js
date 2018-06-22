@@ -106,6 +106,7 @@ function onClick(e) {
                     + '</li>'; */
             }, errData);
         });
+        console.log(arr);
 
     }
     //END//

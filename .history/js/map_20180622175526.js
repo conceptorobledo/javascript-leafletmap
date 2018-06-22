@@ -84,7 +84,6 @@ function onClick(e) {
     homesRef.child(homeId + '/patrols').orderByKey().limitToLast(10).once('value', patrolPerHomeReport, errData);
     function patrolPerHomeReport(data) {
         const patrols = data.val();
-        console.log(patrols);
         if (patrols == null) {
             $('#report-list-active').html('<li>No hay patrullas</li>');
             return false;
@@ -106,6 +105,7 @@ function onClick(e) {
                     + '</li>'; */
             }, errData);
         });
+        console.log(arr);
 
     }
     //END//
