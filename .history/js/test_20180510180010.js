@@ -1,0 +1,27 @@
+const patrolsRef = database.ref('patrols');
+
+//Firebase sacar valores de homes
+patrolsRef.on('child_changed', patrolActivity, errData);
+
+//Aquí se guarda la o las funciones de timer
+let timer = {};
+
+//Actividad de patrulla
+function patrolActivity(data) {
+    const refKey = data.ref.key;
+
+    //Sí marca patrulla, estado esta ok
+    homesRef.child(refKey).update({ estado: 'ok' });
+
+    //Si existia timer, reiniciar timeout
+    if(timer[refKey]){
+        clearTimeout(timer[refKey]);
+    }
+    //Establecer timeout
+    timer[refKey] = setTimeout(() => {
+        console.log('TIMEOUT');
+        delete timer[refKey];      
+        mymap.removeLayer(marker[key]);          
+        homesRef.child(refKey).update({ estado: 'inactividad' });
+    }, 8000);
+}

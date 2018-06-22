@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Secure Control Map</title>
+    <!-- Leaflet CSS-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <!-- Custom User Styles-->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAGBXqx473aPJuFQ35oo1vrPrCa16s_krI",
+            authDomain: "nfc-locator.firebaseapp.com",
+            databaseURL: "https://nfc-locator.firebaseio.com",
+            projectId: "nfc-locator",
+            storageBucket: "nfc-locator.appspot.com",
+            messagingSenderId: "70998200421"
+        };
+        firebase.initializeApp(config);
+    </script>
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <a href="#menu-toggle" class="btn btn-secondary report-toggle" id="menu-toggle">Reporte en tiempo real</a>   
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-header">Reporte </li>
+                <ul id="report-list-all">
+
+                </ul>
+
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->     
+        <!--Stacked Sidebar-->
+        <div id="stacked-sidebar-wrapper">
+            <ul class="stacked sidebar-nav">
+                <li class="sidebar-header">Reporte Hogar<button id="stack-menu-toggle" type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button></li>
+                <ul id="report-list-active">
+
+                </ul>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->        
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div id="mapid"></div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/timestampconverter.js"></script>
+    <script src="js/activityReport.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/test.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+        $("#stack-menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").removeClass("stack-toggled");
+        });
+    </script>
+
+</body>
+
+</html>

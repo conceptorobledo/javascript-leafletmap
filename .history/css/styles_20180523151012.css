@@ -1,0 +1,67 @@
+#mapid {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.report-toggle {
+    position: fixed;
+    top: 2%;
+    z-index: 1100;
+}
+@media (max-width: 767px){
+    .report-toggle{
+        right:2%;
+    }
+}
+
+@media (min-width: 768px) {
+    .report-toggle {
+        position: absolute;
+        left: 9%;
+        top: 2%;
+        z-index: 900;
+    }
+}
+
+.header {
+    font-size: 1.75em;
+    font-weight: 900;
+}
+
+.report-body {
+    font-size: 1.05em;
+    margin: 0;
+}
+
+.status-badge {
+    padding: .15em .5em;
+    font-size: 55%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    color: white;
+    margin-left: .5em;
+}
+
+.status-badge.ok {
+    background-color: #4cae4c;
+}
+.selectedMarker{
+    position:relative;
+}
+.selectedMarker:after {
+    background: url('../img/map-markers-03.png') center center no-repeat;
+    background-size: 50px 78px;  
+    padding:8px;
+    position:absolute;
+    top:0;
+    right:0;
+}
