@@ -5,6 +5,7 @@
 var EpochtoDate = function (timestamp) {
     //Timestamp es de epoch y hay que pasarlo a unix agregandole milisegundos
     const toDate = new Date(timestamp * 1000);
+    const year = toDate.getFullYear();
     const hours = (toDate.getHours() < 10 ? '0' : '') + toDate.getHours();
     //Si el minuto tiene 1 digito, agregarle 0 en frente
     const minutes = (toDate.getMinutes() < 10 ? '0' : '') + toDate.getMinutes();
@@ -56,7 +57,9 @@ var EpochtoDate = function (timestamp) {
     const dayOfTheWeek = toDate.getUTCDay();
     return {
         default: hours + ':' + minutes + ':' + seconds + ' | ' + day + ' de ' + monthName,
+        flat: day + '/' + month + '/' + year,
         hours: hours + ':' + minutes,
-        day_month: day + ' de ' + monthName
+        day_month: day + ' de ' + monthName,
+        month: monthName
     }
 }

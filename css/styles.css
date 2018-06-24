@@ -97,3 +97,7 @@ button:focus {outline:0;}
     background-size: 50px 78px;  
     padding-left:50px;
 }
+
+#control-table{
+    display:none;
+}

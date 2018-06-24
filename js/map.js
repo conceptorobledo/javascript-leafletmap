@@ -78,33 +78,35 @@ function onClick(e) {
         return;
     }
     const address = i.address;
+
     //Añade clase para ponerle fondo
-    console.log(homeId)
     //Firebase sacar valores de patrol del marker
     homesRef.child(homeId + '/patrols').orderByKey().limitToLast(10).once('value', patrolPerHomeReport, errData);
     function patrolPerHomeReport(data) {
         const patrols = data.val();
-        console.log(patrols);
         if (patrols == null) {
             $('#report-list-active').html('<li>No hay patrullas</li>');
             return false;
         }
-        let arr = [];
+        let arr = []; 
 
-        Object.keys(patrols).map(key => {
+        /* Object.keys(patrols).map(key => {
             patrolsRef.child(patrols[key]).once('value', patrolId => {
                 const singlePatrol = patrolId.val();
                 const timeOfPatrol = EpochtoDate(singlePatrol.timestamp).default;
-                const el = { timestamp: singlePatrol.timestamp }
-                /* const el = '<li><div class="report-head">'
+                const el = '<li><div class="report-head">'
                     + address
                     + '<span class="status-badge ok">ok</span>'
                     + '</div>'
                     + '<div class="report-body">'
                     + timeOfPatrol
                     + '</div>'
-                    + '</li>'; */
+                    + '</li>';
+                arr.push(el);
             }, errData);
+        }); */
+        patrolsRef.child().once('value', patrolId => {
+            
         });
 
     }
