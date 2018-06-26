@@ -1,0 +1,24 @@
+nav {
+    margin-bottom: 2%;
+}
+
+.status-badge {
+    padding: .15em .5em;
+    font-size: 55%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    color: white;
+    margin-left: .5em;
+}
+
+.status-badge.ok {
+    background-color: #4cae4c;
+}
+
+.status-badge.nok {
+    background-color: #ff4d04;
+}

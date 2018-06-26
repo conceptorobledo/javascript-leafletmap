@@ -63,3 +63,21 @@ var EpochtoDate = function (timestamp) {
         month: monthName
     }
 }
+
+
+//Pasa Epoch a Unix y luego a fecha
+var EpochtoSimpleDate = function (timestamp) {
+    //Timestamp es de epoch y hay que pasarlo a unix agregandole milisegundos
+    const toDate = new Date(timestamp * 1000);
+    const year = toDate.getFullYear();
+    const hours = (toDate.getHours() < 10 ? '0' : '') + toDate.getHours();
+    //Si el minuto tiene 1 digito, agregarle 0 en frente
+    const minutes = (toDate.getMinutes() < 10 ? '0' : '') + toDate.getMinutes();
+    const seconds = (toDate.getSeconds() < 10 ? '0' : '') + toDate.getSeconds();
+    const day = toDate.getUTCDate();
+    // getMonth, 0 = Enero, 1 = Febrero ... etc
+    const month = toDate.getMonth();
+    const dateformated = day + '/' + month + '/' + year;
+
+    return dateformated;
+}

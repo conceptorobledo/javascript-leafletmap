@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
 
     <!-- Custom styles for this template -->
     <link href="css/simple-sidebar.css" rel="stylesheet" />
@@ -30,7 +28,7 @@
     <div id="wrapper">
         <a href="#menu-toggle" class="btn btn-secondary report-toggle desktop" id="menu-toggle">Reporte en tiempo real</a>
         <a href="#menu-toggle" class="btn btn-secondary report-toggle mobile" id="menu-toggle">Reporte</a>
-        <a class="btn btn-secondary bottom-toggle" id="table-toggle">Reporte</a>
+        <a href="controlpanel.html" class="btn btn-secondary bottom-toggle" id="table-toggle">Reporte</a>
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -82,13 +80,10 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="js/map.js"></script>
     <script src="js/timestampconverter.js"></script>
     <script src="js/activityReport.js"></script>
-    <script src="js/dataTable.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="js/test.js"></script>
     <!-- Menu Toggle Script -->
     <script>
         $("#menu-toggle").click(function (e) {
@@ -100,12 +95,6 @@
             $("#wrapper").removeClass("stack-toggled");
         });
 
-        $("#table-toggle").click(function (e) {
-            console.log('hide');
-            e.preventDefault();
-            $("#wrapper").hide();
-            $("#control-table").show();
-        });
     </script>
 
 </body>

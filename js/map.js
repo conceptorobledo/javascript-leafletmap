@@ -70,29 +70,22 @@ function homesData(data) {
 let eventBackup;
 
 //Función cuando se hace click en el marcador;
+//TODO Hacer petición en tiempo real (on) para actualización de lista en tiempo real.
 function onClick(e) {
-    const i = this.options;
-    const homeId = i.homeId;
+    const markerInfo = this.options;
+    const homeId = markerInfo.homeId;
     if (homeId == undefined) {
         console.log('homeId no definida');
         return;
     }
-    const address = i.address;
+    const address = markerInfo.address;
 
-    //Añade clase para ponerle fondo
-    //Firebase sacar valores de patrol del marker
-    homesRef.child(homeId + '/patrols').orderByKey().limitToLast(10).once('value', patrolPerHomeReport, errData);
-    function patrolPerHomeReport(data) {
-        const patrols = data.val();
-        if (patrols == null) {
-            $('#report-list-active').html('<li>No hay patrullas</li>');
-            return false;
-        }
-        let arr = []; 
-
-        /* Object.keys(patrols).map(key => {
-            patrolsRef.child(patrols[key]).once('value', patrolId => {
-                const singlePatrol = patrolId.val();
+    homesRef.child(homeId + '/patrols').orderByKey().limitToLast(10).once('value').then(snapshot => {
+        let arr = [];
+        snapshot.forEach(childSnapshot => {
+            const patrolId = childSnapshot.val();
+            const promise = patrolsRef.child(patrolId).once('value').then(snap => {
+                const singlePatrol = snap.val();
                 const timeOfPatrol = EpochtoDate(singlePatrol.timestamp).default;
                 const el = '<li><div class="report-head">'
                     + address
@@ -102,14 +95,14 @@ function onClick(e) {
                     + timeOfPatrol
                     + '</div>'
                     + '</li>';
-                arr.push(el);
+                return el;
             }, errData);
-        }); */
-        patrolsRef.child().once('value', patrolId => {
-            
+            arr.unshift(promise);
         });
-
-    }
+        return Promise.all(arr);
+    }, errData).then(values => {
+        $('#report-list-active').html(values).animate();
+    });
     //END//
     $(e.target._icon).addClass('selectedMarker');
     if (eventBackup == undefined) {
